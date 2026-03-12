@@ -1,10 +1,1267 @@
 <!DOCTYPE html>
-<html>
+
+<html lang="en">
 <head>
-    <title>AQUA CRISIS</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AQUA CRISIS — The World Water Emergency</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap');
+
+```
+:root {
+  --ink: #0a0c0f;
+  --water: #0d7dba;
+  --deep: #003d5c;
+  --ice: #c8e8f5;
+  --sand: #e8d5a0;
+  --red: #c23b22;
+  --white: #f5f0e8;
+  --mono: 'DM Mono', 'Courier New', monospace;
+  --serif: 'DM Serif Display', Georgia, serif;
+  --display: 'Bebas Neue', Impact, 'Arial Narrow', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--ink);
+  color: var(--white);
+  font-family: var(--mono);
+  font-size: 15px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ── NOISE OVERLAY ── */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.35;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.2rem 3rem;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  background: rgba(10,12,15,0.85);
+  backdrop-filter: blur(12px);
+}
+
+.nav-logo {
+  font-family: var(--display);
+  font-size: 1.5rem;
+  letter-spacing: 0.12em;
+  color: var(--water);
+}
+
+.nav-links { display: flex; gap: 2.5rem; }
+.nav-links a {
+  color: rgba(245,240,232,0.6);
+  text-decoration: none;
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--ice); }
+
+.nav-cta {
+  background: var(--water);
+  color: var(--white) !important;
+  padding: 0.45rem 1.2rem;
+  border: none;
+  font-size: 0.7rem !important;
+  letter-spacing: 0.2em !important;
+  transition: background 0.3s !important;
+}
+.nav-cta:hover { background: var(--deep) !important; color: var(--white) !important; }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  position: relative;
+  overflow: hidden;
+  padding: 0 3rem;
+}
+
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 120%, rgba(13,125,186,0.25) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 40% at 20% 80%, rgba(0,61,92,0.4) 0%, transparent 60%),
+    linear-gradient(180deg, #0a0c0f 0%, #050e15 100%);
+}
+
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(13,125,186,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(13,125,186,0.05) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.hero-content {
+  position: relative; z-index: 2;
+  display: flex; flex-direction: column; justify-content: center;
+  padding-top: 8rem; padding-bottom: 4rem;
+  max-width: 1100px;
+}
+
+.hero-eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--water);
+  margin-bottom: 2rem;
+  display: flex; align-items: center; gap: 1rem;
+}
+.hero-eyebrow::before {
+  content: '';
+  display: block;
+  width: 40px; height: 1px;
+  background: var(--water);
+}
+
+.hero-title {
+  font-family: var(--display);
+  font-size: clamp(4.5rem, 10vw, 10rem);
+  line-height: 0.92;
+  letter-spacing: 0.02em;
+  color: var(--white);
+  margin-bottom: 1.5rem;
+}
+
+.hero-title span {
+  color: var(--water);
+  display: block;
+}
+
+.hero-sub {
+  font-family: var(--serif);
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  color: rgba(245,240,232,0.65);
+  max-width: 520px;
+  margin-bottom: 3rem;
+  font-style: italic;
+}
+
+.hero-stats {
+  display: flex; gap: 3.5rem; flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+.stat-item { display: flex; flex-direction: column; }
+.stat-num {
+  font-family: var(--display);
+  font-size: 3.2rem;
+  color: var(--water);
+  line-height: 1;
+}
+.stat-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(245,240,232,0.45);
+  margin-top: 0.3rem;
+}
+
+.hero-cta-row { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn-primary {
+  background: var(--water);
+  color: var(--white);
+  border: none;
+  padding: 1rem 2.2rem;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s;
+}
+.btn-primary:hover { background: #0e6fa6; }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--white);
+  border: 1px solid rgba(245,240,232,0.25);
+  padding: 1rem 2.2rem;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s;
+}
+.btn-ghost:hover { border-color: var(--ice); color: var(--ice); }
+
+.hero-scroll {
+  position: relative; z-index: 2;
+  padding-bottom: 2.5rem;
+  display: flex; align-items: center; gap: 1rem;
+}
+.scroll-line {
+  width: 1px; height: 50px;
+  background: linear-gradient(to bottom, var(--water), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.4; transform: scaleY(1); }
+  50% { opacity: 1; transform: scaleY(1.2); }
+}
+.scroll-text {
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(245,240,232,0.35);
+  writing-mode: vertical-lr;
+}
+
+/* ── TICKER ── */
+.ticker {
+  background: var(--water);
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 0.8rem 0;
+}
+.ticker-inner {
+  display: inline-block;
+  animation: ticker 30s linear infinite;
+}
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.ticker-inner span {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin: 0 3rem;
+  font-weight: 500;
+}
+.ticker-dot { color: rgba(255,255,255,0.4); }
+
+/* ── SECTIONS ── */
+section { padding: 6rem 3rem; }
+
+.section-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--water);
+  margin-bottom: 1.5rem;
+  display: flex; align-items: center; gap: 0.8rem;
+}
+.section-label::after {
+  content: '';
+  flex: 1; max-width: 40px; height: 1px;
+  background: var(--water);
+}
+
+.section-title {
+  font-family: var(--display);
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+  margin-bottom: 1.5rem;
+}
+
+.section-body {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  color: rgba(245,240,232,0.65);
+  max-width: 560px;
+  font-style: italic;
+}
+
+/* ── CRISIS SECTION ── */
+.crisis {
+  background: #060a0e;
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+
+.crisis-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  margin-top: 4rem;
+  align-items: start;
+}
+
+.crisis-visual {
+  position: relative;
+}
+
+.water-globe {
+  width: 100%;
+  aspect-ratio: 1;
+  max-width: 360px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    var(--deep) 0%,
+    var(--water) 15%,
+    #1a5f7a 30%,
+    var(--sand) 35%,
+    var(--sand) 45%,
+    var(--water) 48%,
+    var(--deep) 60%,
+    var(--water) 75%,
+    var(--sand) 80%,
+    var(--sand) 90%,
+    var(--water) 95%,
+    var(--deep) 100%
+  );
+  box-shadow:
+    0 0 80px rgba(13,125,186,0.3),
+    inset 0 0 40px rgba(0,0,0,0.4);
+  animation: globeRotate 20s linear infinite;
+  position: relative;
+}
+
+@keyframes globeRotate {
+  from { filter: hue-rotate(0deg); }
+  to { filter: hue-rotate(10deg); }
+}
+
+.globe-caption {
+  margin-top: 1.5rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(245,240,232,0.3);
+  text-align: center;
+}
+
+.crisis-facts { display: flex; flex-direction: column; gap: 2rem; }
+
+.fact-card {
+  border-left: 2px solid var(--water);
+  padding: 1.2rem 1.5rem;
+  background: rgba(13,125,186,0.05);
+  transition: background 0.3s;
+}
+.fact-card:hover { background: rgba(13,125,186,0.1); }
+
+.fact-number {
+  font-family: var(--display);
+  font-size: 2.8rem;
+  color: var(--water);
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+.fact-text {
+  font-size: 0.8rem;
+  color: rgba(245,240,232,0.55);
+  letter-spacing: 0.04em;
+}
+
+/* ── REGIONS ── */
+.regions {
+  background: #080c10;
+}
+
+.regions-table {
+  margin-top: 3.5rem;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.regions-table thead tr {
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.regions-table th {
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(245,240,232,0.3);
+  padding: 0.8rem 1rem;
+  text-align: left;
+}
+.regions-table td {
+  padding: 1.1rem 1rem;
+  font-size: 0.82rem;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  vertical-align: middle;
+}
+.regions-table tbody tr { transition: background 0.25s; }
+.regions-table tbody tr:hover { background: rgba(13,125,186,0.06); }
+
+.region-name {
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-style: italic;
+}
+
+.severity-bar-wrap {
+  display: flex; align-items: center; gap: 0.8rem;
+}
+.severity-bar-bg {
+  flex: 1; height: 3px;
+  background: rgba(255,255,255,0.07);
+  position: relative;
+}
+.severity-bar-fill {
+  position: absolute; top: 0; left: 0; bottom: 0;
+  background: var(--water);
+  transition: width 0.8s ease;
+}
+.severity-bar-fill.critical { background: var(--red); }
+.severity-bar-fill.high { background: #e07b2a; }
+.severity-bar-fill.moderate { background: var(--water); }
+
+.badge {
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.55rem;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+.badge.critical { background: rgba(194,59,34,0.2); color: #e06b50; }
+.badge.high { background: rgba(224,123,42,0.2); color: #e9a060; }
+.badge.moderate { background: rgba(13,125,186,0.2); color: var(--ice); }
+
+/* ── CAUSES ── */
+.causes { background: #060a0e; }
+
+.causes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5px;
+  margin-top: 4rem;
+  background: rgba(255,255,255,0.04);
+}
+
+.cause-card {
+  background: #080c10;
+  padding: 2.5rem 2rem;
+  transition: background 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.cause-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--water);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+.cause-card:hover::before { transform: scaleX(1); }
+.cause-card:hover { background: #0d1218; }
+
+.cause-icon {
+  font-size: 2rem;
+  margin-bottom: 1.2rem;
+  display: block;
+}
+.cause-title {
+  font-family: var(--display);
+  font-size: 1.6rem;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.8rem;
+}
+.cause-desc {
+  font-size: 0.78rem;
+  color: rgba(245,240,232,0.45);
+  line-height: 1.8;
+}
+
+/* ── SOLUTIONS ── */
+.solutions { background: #050d14; }
+
+.solutions-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  margin-top: 4rem;
+}
+
+.solution-item {
+  padding: 2.5rem;
+  border: 1px solid rgba(255,255,255,0.06);
+  position: relative;
+  transition: border-color 0.3s;
+}
+.solution-item:hover { border-color: rgba(13,125,186,0.3); }
+
+.solution-num {
+  font-family: var(--display);
+  font-size: 5rem;
+  line-height: 1;
+  color: rgba(13,125,186,0.15);
+  position: absolute;
+  top: 1rem; right: 1.5rem;
+}
+.solution-title {
+  font-family: var(--display);
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  position: relative; z-index: 1;
+}
+.solution-desc {
+  font-size: 0.8rem;
+  color: rgba(245,240,232,0.5);
+  line-height: 1.9;
+  margin-bottom: 1.5rem;
+}
+.solution-tag {
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--water);
+  border: 1px solid rgba(13,125,186,0.35);
+  padding: 0.2rem 0.6rem;
+  display: inline-block;
+}
+
+/* ── COUNTER ── */
+.live-counter {
+  background: var(--deep);
+  padding: 5rem 3rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.live-counter::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(13,125,186,0.2), transparent);
+}
+.counter-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--ice);
+  margin-bottom: 1rem;
+  opacity: 0.7;
+}
+.counter-number {
+  font-family: var(--display);
+  font-size: clamp(3.5rem, 8vw, 8rem);
+  color: var(--white);
+  line-height: 1;
+  position: relative; z-index: 1;
+}
+.counter-sub {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  color: rgba(200,232,245,0.6);
+  margin-top: 1rem;
+  font-style: italic;
+}
+.counter-note {
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: rgba(200,232,245,0.3);
+  margin-top: 1.5rem;
+}
+
+/* ── ACT ── */
+.act {
+  background: #0a0c0f;
+  text-align: center;
+}
+
+.act-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-top: 4rem;
+  background: rgba(255,255,255,0.03);
+}
+
+.act-card {
+  background: #0a0d11;
+  padding: 3rem 2rem;
+  transition: background 0.3s;
+}
+.act-card:hover { background: rgba(13,125,186,0.08); }
+
+.act-icon { font-size: 2.5rem; display: block; margin-bottom: 1.5rem; }
+.act-title {
+  font-family: var(--display);
+  font-size: 1.8rem;
+  margin-bottom: 0.8rem;
+  color: var(--white);
+}
+.act-desc {
+  font-size: 0.78rem;
+  color: rgba(245,240,232,0.4);
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+.act-link {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--water);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(13,125,186,0.3);
+  padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.act-link:hover { color: var(--ice); border-color: var(--ice); }
+
+/* ── NEWSLETTER ── */
+.newsletter {
+  background: linear-gradient(135deg, #031620 0%, #003d5c 100%);
+  padding: 6rem 3rem;
+  text-align: center;
+  position: relative;
+}
+.newsletter::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230d7dba' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+.newsletter-title {
+  font-family: var(--display);
+  font-size: clamp(2rem, 4vw, 4rem);
+  margin-bottom: 1rem;
+  position: relative; z-index: 1;
+}
+.newsletter-sub {
+  font-family: var(--serif);
+  font-style: italic;
+  color: rgba(200,232,245,0.6);
+  margin-bottom: 2.5rem;
+  position: relative; z-index: 1;
+}
+.newsletter-form {
+  display: flex; gap: 0; max-width: 480px;
+  margin: 0 auto;
+  position: relative; z-index: 1;
+}
+.newsletter-input {
+  flex: 1;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-right: none;
+  color: var(--white);
+  padding: 0.9rem 1.2rem;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+.newsletter-input::placeholder { color: rgba(255,255,255,0.25); }
+.newsletter-input:focus { border-color: var(--water); }
+.newsletter-btn {
+  background: var(--water);
+  color: var(--white);
+  border: none;
+  padding: 0.9rem 1.6rem;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.newsletter-btn:hover { background: #1590d0; }
+
+/* ── FOOTER ── */
+footer {
+  background: #05080a;
+  padding: 4rem 3rem 2rem;
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 4rem;
+  margin-bottom: 4rem;
+}
+
+.footer-brand .nav-logo { display: block; margin-bottom: 1rem; font-size: 1.8rem; }
+.footer-brand p {
+  font-size: 0.75rem;
+  color: rgba(245,240,232,0.3);
+  line-height: 1.8;
+  max-width: 260px;
+}
+
+.footer-col h4 {
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(245,240,232,0.3);
+  margin-bottom: 1.5rem;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
+.footer-col li a {
+  font-size: 0.78rem;
+  color: rgba(245,240,232,0.45);
+  text-decoration: none;
+  transition: color 0.25s;
+}
+.footer-col li a:hover { color: var(--ice); }
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.04);
+  padding-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-copy {
+  font-size: 0.65rem;
+  color: rgba(245,240,232,0.2);
+  letter-spacing: 0.1em;
+}
+.footer-tagline {
+  font-size: 0.65rem;
+  color: var(--water);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* ── ANIMATIONS ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+  section { padding: 4rem 1.5rem; }
+  .hero { padding: 0 1.5rem; }
+  .hero-stats { gap: 2rem; }
+  .crisis-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .causes-grid { grid-template-columns: 1fr; }
+  .solutions-layout { grid-template-columns: 1fr; gap: 1.5rem; }
+  .act-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .live-counter { padding: 4rem 1.5rem; }
+}
+
+@media (max-width: 600px) {
+  .hero-title { font-size: 3.8rem; }
+  .regions-table { font-size: 0.72rem; }
+  .newsletter-form { flex-direction: column; }
+  .newsletter-input { border-right: 1px solid rgba(255,255,255,0.12); border-bottom: none; }
+  .footer-grid { grid-template-columns: 1fr; }
+}
+```
+
+  </style>
 </head>
 <body>
-    <h1>Welcome to the AQUA CRISIS Information Website</h1>
-    <p>Here you will find essential information regarding water emergencies.</p>
+
+  <!-- NAV -->
+
+  <nav>
+    <div class="nav-logo">AQUA CRISIS</div>
+    <div class="nav-links">
+      <a href="#crisis">The Crisis</a>
+      <a href="#regions">Regions</a>
+      <a href="#causes">Causes</a>
+      <a href="#solutions">Solutions</a>
+      <a href="#act" class="nav-cta">Act Now</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Global Water Emergency · 2026</div>
+      <h1 class="hero-title">
+        THE WORLD
+        <span>IS RUNNING</span>
+        DRY.
+      </h1>
+      <p class="hero-sub">
+        2.2 billion people lack access to safe drinking water. By 2030, demand will exceed supply by 40%. This is not a future problem — it is happening now.
+      </p>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num">2.2B</div>
+          <div class="stat-label">Without Safe Water</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">3.5B</div>
+          <div class="stat-label">Water-Scarce Zones</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">40%</div>
+          <div class="stat-label">Shortfall by 2030</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">6,000</div>
+          <div class="stat-label">Children Die Daily</div>
+        </div>
+      </div>
+      <div class="hero-cta-row">
+        <a href="#crisis" class="btn-primary">Understand the Crisis</a>
+        <a href="#solutions" class="btn-ghost">View Solutions</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      <div class="scroll-text">Scroll</div>
+    </div>
+  </section>
+
+  <!-- TICKER -->
+
+  <div class="ticker">
+    <div class="ticker-inner">
+      <span>Water stress affects 40% of global population <span class="ticker-dot">◆</span></span>
+      <span>Sub-Saharan Africa: 400M lack clean water <span class="ticker-dot">◆</span></span>
+      <span>Agriculture consumes 70% of all freshwater <span class="ticker-dot">◆</span></span>
+      <span>Groundwater depleting 3× faster than recharge rate <span class="ticker-dot">◆</span></span>
+      <span>Climate change accelerating desertification worldwide <span class="ticker-dot">◆</span></span>
+      <span>1 in 4 hospitals lacks clean water access <span class="ticker-dot">◆</span></span>
+      <span>Water scarcity could displace 700M by 2030 <span class="ticker-dot">◆</span></span>
+      <span>Water stress affects 40% of global population <span class="ticker-dot">◆</span></span>
+      <span>Sub-Saharan Africa: 400M lack clean water <span class="ticker-dot">◆</span></span>
+      <span>Agriculture consumes 70% of all freshwater <span class="ticker-dot">◆</span></span>
+      <span>Groundwater depleting 3× faster than recharge rate <span class="ticker-dot">◆</span></span>
+      <span>Climate change accelerating desertification worldwide <span class="ticker-dot">◆</span></span>
+      <span>1 in 4 hospitals lacks clean water access <span class="ticker-dot">◆</span></span>
+      <span>Water scarcity could displace 700M by 2030 <span class="ticker-dot">◆</span></span>
+    </div>
+  </div>
+
+  <!-- THE CRISIS -->
+
+  <section class="crisis" id="crisis">
+    <div class="section-label">Section 01</div>
+    <h2 class="section-title reveal">THE SCALE<br>OF COLLAPSE</h2>
+    <p class="section-body reveal">Water is the fundamental input of human civilization. Its scarcity does not merely cause thirst — it dismantles food systems, collapses economies, triggers conflict, and kills children before they reach age five.</p>
+
+```
+<div class="crisis-grid">
+  <div class="crisis-visual reveal">
+    <div class="water-globe"></div>
+    <div class="globe-caption">Only 2.5% of Earth's water is freshwater — and most is inaccessible.</div>
+  </div>
+  <div class="crisis-facts reveal">
+    <div class="fact-card">
+      <div class="fact-number">785M</div>
+      <div class="fact-text">People drink from unsafe, unprotected water sources — rivers, ponds, and unregulated wells contaminated with pathogens.</div>
+    </div>
+    <div class="fact-card">
+      <div class="fact-number">2.5HR</div>
+      <div class="fact-text">Average daily time women and girls in Sub-Saharan Africa spend collecting water — time stolen from education and productivity.</div>
+    </div>
+    <div class="fact-card">
+      <div class="fact-number">$260B</div>
+      <div class="fact-text">Annual economic loss from inadequate water supply and sanitation in developing nations, per World Bank estimates.</div>
+    </div>
+    <div class="fact-card">
+      <div class="fact-number">3.6B</div>
+      <div class="fact-text">People live in areas with inadequate water supply at least one month per year — a number projected to reach 5.7B by 2050.</div>
+    </div>
+  </div>
+</div>
+```
+
+  </section>
+
+  <!-- LIVE COUNTER -->
+
+  <div class="live-counter">
+    <div class="counter-label">People who died from water-related disease since you opened this page</div>
+    <div class="counter-number" id="deathCounter">0</div>
+    <div class="counter-sub">Every 2 minutes, a child dies from a water-related disease.</div>
+    <div class="counter-note">Counter estimates based on WHO data: ~3,300 preventable deaths per day.</div>
+  </div>
+
+  <!-- AFFECTED REGIONS -->
+
+  <section class="regions" id="regions">
+    <div class="section-label">Section 02</div>
+    <h2 class="section-title reveal">WHERE THE<br>CRISIS BURNS</h2>
+    <p class="section-body reveal">These are not isolated pockets of poverty. These are systematic failures of water infrastructure across regions housing hundreds of millions.</p>
+
+```
+<table class="regions-table reveal">
+  <thead>
+    <tr>
+      <th>Region</th>
+      <th>Population Affected</th>
+      <th>Severity</th>
+      <th>Primary Driver</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="region-name">Sub-Saharan Africa</span></td>
+      <td>400 million</td>
+      <td>
+        <div class="severity-bar-wrap">
+          <div class="severity-bar-bg"><div class="severity-bar-fill critical" style="width:95%"></div></div>
+          95%
+        </div>
+      </td>
+      <td>Infrastructure gap</td>
+      <td><span class="badge critical">Critical</span></td>
+    </tr>
+    <tr>
+      <td><span class="region-name">South Asia (India, Pakistan)</span></td>
+      <td>600 million</td>
+      <td>
+        <div class="severity-bar-wrap">
+          <div class="severity-bar-bg"><div class="severity-bar-fill critical" style="width:88%"></div></div>
+          88%
+        </div>
+      </td>
+      <td>Groundwater depletion</td>
+      <td><span class="badge critical">Critical</span></td>
+    </tr>
+    <tr>
+      <td><span class="region-name">Middle East & North Africa</span></td>
+      <td>250 million</td>
+      <td>
+        <div class="severity-bar-wrap">
+          <div class="severity-bar-bg"><div class="severity-bar-fill high" style="width:80%"></div></div>
+          80%
+        </div>
+      </td>
+      <td>Arid climate + conflict</td>
+      <td><span class="badge high">High Risk</span></td>
+    </tr>
+    <tr>
+      <td><span class="region-name">Central America</span></td>
+      <td>90 million</td>
+      <td>
+        <div class="severity-bar-wrap">
+          <div class="severity-bar-bg"><div class="severity-bar-fill high" style="width:70%"></div></div>
+          70%
+        </div>
+      </td>
+      <td>Drought cycles</td>
+      <td><span class="badge high">High Risk</span></td>
+    </tr>
+    <tr>
+      <td><span class="region-name">Northern China</span></td>
+      <td>320 million</td>
+      <td>
+        <div class="severity-bar-wrap">
+          <div class="severity-bar-bg"><div class="severity-bar-fill high" style="width:75%"></div></div>
+          75%
+        </div>
+      </td>
+      <td>Aquifer exhaustion</td>
+      <td><span class="badge high">High Risk</span></td>
+    </tr>
+    <tr>
+      <td><span class="region-name">Southern Europe (Spain, Italy)</span></td>
+      <td>50 million</td>
+      <td>
+        <div class="severity-bar-wrap">
+          <div class="severity-bar-bg"><div class="severity-bar-fill moderate" style="width:45%"></div></div>
+          45%
+        </div>
+      </td>
+      <td>Climate-induced drought</td>
+      <td><span class="badge moderate">Moderate</span></td>
+    </tr>
+  </tbody>
+</table>
+```
+
+  </section>
+
+  <!-- CAUSES -->
+
+  <section class="causes" id="causes">
+    <div class="section-label">Section 03</div>
+    <h2 class="section-title reveal">ROOT<br>CAUSES</h2>
+    <p class="section-body reveal">Water scarcity is not an act of nature. It is the product of compounding human systems — agricultural, industrial, political, and climatic — intersecting without adequate governance.</p>
+
+```
+<div class="causes-grid reveal">
+  <div class="cause-card">
+    <span class="cause-icon">🌾</span>
+    <div class="cause-title">Industrial Agriculture</div>
+    <div class="cause-desc">Agriculture consumes 70% of the world's freshwater — irrigating crops inefficiently, depleting aquifers at rates that take millennia to replenish. Meat production alone requires 15,000 liters of water per kilogram.</div>
+  </div>
+  <div class="cause-card">
+    <span class="cause-icon">🌡️</span>
+    <div class="cause-title">Climate Disruption</div>
+    <div class="cause-desc">Rising temperatures accelerate evaporation, shrink glaciers (the water towers of Asia), and shift rainfall patterns. Wet regions flood; dry regions become deserts. Predictability collapses.</div>
+  </div>
+  <div class="cause-card">
+    <span class="cause-icon">🏙️</span>
+    <div class="cause-title">Urban Growth Without Infrastructure</div>
+    <div class="cause-desc">Megacities expand faster than water infrastructure can scale. 1 billion people live in urban slums without reliable piped water, forcing dependency on vendors charging 10× market rates.</div>
+  </div>
+  <div class="cause-card">
+    <span class="cause-icon">⚗️</span>
+    <div class="cause-title">Pollution & Contamination</div>
+    <div class="cause-desc">Industrial discharge, agricultural runoff, and inadequate sewage treatment render existing freshwater sources unusable. Arsenic, nitrates, and pharmaceutical compounds now appear in groundwater globally.</div>
+  </div>
+  <div class="cause-card">
+    <span class="cause-icon">⚖️</span>
+    <div class="cause-title">Governance Failure</div>
+    <div class="cause-desc">Water crosses borders; policies do not. Transboundary river disputes, corrupt infrastructure projects, and absent long-term water planning leave billions exposed to preventable scarcity.</div>
+  </div>
+  <div class="cause-card">
+    <span class="cause-icon">📉</span>
+    <div class="cause-title">Underinvestment</div>
+    <div class="cause-desc">Low-income nations spend less than 0.1% of GDP on water infrastructure. The return on investment is 4:1 — yet political short-termism continues to deprioritize systems that generate no immediate revenue.</div>
+  </div>
+</div>
+```
+
+  </section>
+
+  <!-- SOLUTIONS -->
+
+  <section class="solutions" id="solutions">
+    <div class="section-label">Section 04</div>
+    <h2 class="section-title reveal">THE PATHS<br>FORWARD</h2>
+    <p class="section-body reveal">The crisis is real. The solutions exist. What is missing is urgency, political will, and coordinated capital at the required scale.</p>
+
+```
+<div class="solutions-layout">
+  <div class="solution-item reveal">
+    <div class="solution-num">01</div>
+    <div class="solution-title">Atmospheric Water Harvesting</div>
+    <div class="solution-desc">Fog collectors, dew condensers, and advanced AWG (atmospheric water generation) machines now produce potable water from air in regions with 30%+ humidity — no groundwater, no infrastructure required.</div>
+    <span class="solution-tag">Emerging Technology</span>
+  </div>
+  <div class="solution-item reveal">
+    <div class="solution-num">02</div>
+    <div class="solution-title">Solar-Powered Desalination</div>
+    <div class="solution-desc">Modern reverse osmosis systems powered by photovoltaic arrays can convert seawater to drinking water at $0.50–$1.00/m³. Scalable from village-level units to city-scale plants.</div>
+    <span class="solution-tag">Proven at Scale</span>
+  </div>
+  <div class="solution-item reveal">
+    <div class="solution-num">03</div>
+    <div class="solution-title">Precision Irrigation</div>
+    <div class="solution-desc">Drip irrigation and soil-sensor-guided watering reduces agricultural water use by 40–60% while maintaining or improving crop yields. Israel has deployed this nationally; the model is replicable.</div>
+    <span class="solution-tag">Agricultural Reform</span>
+  </div>
+  <div class="solution-item reveal">
+    <div class="solution-num">04</div>
+    <div class="solution-title">Wastewater Recycling</div>
+    <div class="solution-desc">Singapore's NEWater system recycles 100% of wastewater to potable standards. Urban water recycling infrastructure reduces net demand by up to 30%, critical for water-stressed cities.</div>
+    <span class="solution-tag">Circular Systems</span>
+  </div>
+  <div class="solution-item reveal">
+    <div class="solution-num">05</div>
+    <div class="solution-title">Rainwater Harvesting Networks</div>
+    <div class="solution-desc">Community-scale rooftop collection systems with underground cisterns provide localized resilience. India's Rajasthan region has revived 1,000-year-old johad systems to great effect.</div>
+    <span class="solution-tag">Community Infrastructure</span>
+  </div>
+  <div class="solution-item reveal">
+    <div class="solution-num">06</div>
+    <div class="solution-title">Transboundary Water Treaties</div>
+    <div class="solution-desc">Diplomatic frameworks for shared river basin management prevent water wars and optimize distribution. The Mekong and Nile agreements show both the difficulty and necessity of these negotiations.</div>
+    <span class="solution-tag">Political Architecture</span>
+  </div>
+</div>
+```
+
+  </section>
+
+  <!-- ACT NOW -->
+
+  <section class="act" id="act">
+    <div class="section-label" style="justify-content:center">Section 05</div>
+    <h2 class="section-title reveal">WHAT YOU<br>CAN DO</h2>
+    <p class="section-body reveal" style="margin:0 auto 0">Knowledge without action is theater. These are concrete leverage points available at every level of agency.</p>
+
+```
+<div class="act-grid reveal">
+  <div class="act-card">
+    <span class="act-icon">🔬</span>
+    <div class="act-title">Learn & Research</div>
+    <div class="act-desc">Understand the systems driving water scarcity. Water, energy, and food nexus thinking is foundational to every solution in climate, agriculture, and urban policy.</div>
+    <a href="#" class="act-link">Access Research Library</a>
+  </div>
+  <div class="act-card">
+    <span class="act-icon">💰</span>
+    <div class="act-title">Fund Frontlines</div>
+    <div class="act-desc">Charity: Water, Water.org, and WaterAid operate with high accountability. $30 provides clean water access for one person for a decade. The leverage is real.</div>
+    <a href="#" class="act-link">View Vetted Organizations</a>
+  </div>
+  <div class="act-card">
+    <span class="act-icon">📣</span>
+    <div class="act-title">Demand Policy</div>
+    <div class="act-desc">Water infrastructure investment, pollution regulations, and agricultural reform require political pressure. Advocacy at local, national, and international levels creates compounding change.</div>
+    <a href="#" class="act-link">Policy Action Toolkit</a>
+  </div>
+  <div class="act-card">
+    <span class="act-icon">🏠</span>
+    <div class="act-title">Reduce Footprint</div>
+    <div class="act-desc">The average person's virtual water consumption (embedded in food and goods) is 3,800 liters/day. Dietary shifts, reduced waste, and product choices carry real aggregate impact.</div>
+    <a href="#" class="act-link">Calculate Your Usage</a>
+  </div>
+  <div class="act-card">
+    <span class="act-icon">🛠️</span>
+    <div class="act-title">Build Solutions</div>
+    <div class="act-desc">Engineers, developers, scientists, and policymakers are needed in water technology. This is one of the highest-leverage technical domains of the 21st century.</div>
+    <a href="#" class="act-link">Career Pathways</a>
+  </div>
+  <div class="act-card">
+    <span class="act-icon">📡</span>
+    <div class="act-title">Spread Awareness</div>
+    <div class="act-desc">Information asymmetry is part of the problem. Sharing accurate, data-grounded content breaks through noise and moves the issue up the global priority stack.</div>
+    <a href="#" class="act-link">Share This Site</a>
+  </div>
+</div>
+```
+
+  </section>
+
+  <!-- NEWSLETTER -->
+
+  <div class="newsletter">
+    <h2 class="newsletter-title">STAY INFORMED</h2>
+    <p class="newsletter-sub">Monthly briefing. Zero noise. Pure signal on water science, policy, and solutions.</p>
+    <div class="newsletter-form">
+      <input type="email" class="newsletter-input" placeholder="your@email.com" />
+      <button class="newsletter-btn">Subscribe</button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="nav-logo">AQUA CRISIS</span>
+        <p>A global information platform tracking the water scarcity emergency. Data sourced from WHO, UNICEF, World Bank, and leading hydrological research institutions.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Sections</h4>
+        <ul>
+          <li><a href="#crisis">The Crisis</a></li>
+          <li><a href="#regions">Affected Regions</a></li>
+          <li><a href="#causes">Root Causes</a></li>
+          <li><a href="#solutions">Solutions</a></li>
+          <li><a href="#act">Take Action</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Data Sources</h4>
+        <ul>
+          <li><a href="#">WHO Reports</a></li>
+          <li><a href="#">UNICEF Data</a></li>
+          <li><a href="#">World Bank</a></li>
+          <li><a href="#">IPCC Findings</a></li>
+          <li><a href="#">FAO Statistics</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Get Involved</h4>
+        <ul>
+          <li><a href="#">Donate</a></li>
+          <li><a href="#">Volunteer</a></li>
+          <li><a href="#">Research Hub</a></li>
+          <li><a href="#">Press Kit</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 AQUA CRISIS. Data updated quarterly. All statistics from peer-reviewed sources.</div>
+      <div class="footer-tagline">Water Is Life. Treat It Accordingly.</div>
+    </div>
+  </footer>
+
+  <script>
+    // ── SCROLL REVEAL ──
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 80);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+
+    // ── LIVE DEATH COUNTER ──
+    // 3,300 deaths/day ≈ 0.038 per second
+    let deaths = 0;
+    const ratePerSec = 3300 / 86400;
+    const counterEl = document.getElementById('deathCounter');
+    let startTime = null;
+
+    function updateCounter(ts) {
+      if (!startTime) startTime = ts;
+      const elapsed = (ts - startTime) / 1000;
+      deaths = Math.floor(elapsed * ratePerSec);
+      counterEl.textContent = deaths.toLocaleString();
+      requestAnimationFrame(updateCounter);
+    }
+    requestAnimationFrame(updateCounter);
+
+    // ── SEVERITY BARS ANIMATION ON SCROLL ──
+    const barObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const fills = entry.target.querySelectorAll('.severity-bar-fill');
+          fills.forEach(bar => {
+            const target = bar.style.width;
+            bar.style.width = '0%';
+            requestAnimationFrame(() => {
+              setTimeout(() => { bar.style.width = target; }, 100);
+            });
+          });
+          barObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    const table = document.querySelector('.regions-table');
+    if (table) barObserver.observe(table);
+
+    // ── NEWSLETTER SUBMIT ──
+    document.querySelector('.newsletter-btn').addEventListener('click', function() {
+      const input = document.querySelector('.newsletter-input');
+      if (input.value && input.value.includes('@')) {
+        input.value = '';
+        this.textContent = 'Subscribed ✓';
+        this.style.background = '#1a7a4a';
+        setTimeout(() => {
+          this.textContent = 'Subscribe';
+          this.style.background = '';
+        }, 3000);
+      } else {
+        input.style.borderColor = '#c23b22';
+        setTimeout(() => { input.style.borderColor = ''; }, 2000);
+      }
+    });
+  </script>
+
 </body>
 </html>
