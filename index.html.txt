@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AQUA CRISIS — The World Water Emergency</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <nav>
+    <div class="nav-logo">AQUA CRISIS</div>
+    <div class="nav-links">
+      <a href="#crisis">The Crisis</a>
+      <a href="#regions">Regions</a>
+      <a href="#causes">Causes</a>
+      <a href="#solutions">Solutions</a>
+      <a href="#act" class="nav-cta">Act Now</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Global Water Emergency · 2026</div>
+      <h1 class="hero-title">THE WORLD<span>IS RUNNING</span>DRY.</h1>
+      <p class="hero-sub">2.2 billion people lack access to safe drinking water. By 2030, demand will exceed supply by 40%. This is not a future problem — it is happening now.</p>
+      <div class="hero-stats">
+        <div class="stat-item"><div class="stat-num">2.2B</div><div class="stat-label">Without Safe Water</div></div>
+        <div class="stat-item"><div class="stat-num">3.5B</div><div class="stat-label">Water-Scarce Zones</div></div>
+        <div class="stat-item"><div class="stat-num">40%</div><div class="stat-label">Shortfall by 2030</div></div>
+        <div class="stat-item"><div class="stat-num">6,000</div><div class="stat-label">Children Die Daily</div></div>
+      </div>
+      <div class="hero-cta-row">
+        <a href="#crisis" class="btn-primary">Understand the Crisis</a>
+        <a href="#solutions" class="btn-ghost">View Solutions</a>
+      </div>
+    </div>
+    <div class="hero-scroll"><div class="scroll-line"></div><div class="scroll-text">Scroll</div></div>
+  </section>
+
+  <div class="ticker">
+    <div class="ticker-inner">
+      <span>Water stress affects 40% of global population <span class="ticker-dot">◆</span></span>
+      <span>Sub-Saharan Africa: 400M lack clean water <span class="ticker-dot">◆</span></span>
+      <span>Agriculture consumes 70% of all freshwater <span class="ticker-dot">◆</span></span>
+      <span>Groundwater depleting 3× faster than recharge rate <span class="ticker-dot">◆</span></span>
+      <span>Climate change accelerating desertification worldwide <span class="ticker-dot">◆</span></span>
+      <span>Water stress affects 40% of global population <span class="ticker-dot">◆</span></span>
+      <span>Sub-Saharan Africa: 400M lack clean water <span class="ticker-dot">◆</span></span>
+      <span>Agriculture consumes 70% of all freshwater <span class="ticker-dot">◆</span></span>
+      <span>Groundwater depleting 3× faster than recharge rate <span class="ticker-dot">◆</span></span>
+      <span>Climate change accelerating desertification worldwide <span class="ticker-dot">◆</span></span>
+    </div>
+  </div>
+
+  <section class="crisis" id="crisis">
+    <div class="section-label">Section 01</div>
+    <h2 class="section-title reveal">THE SCALE<br>OF COLLAPSE</h2>
+    <p class="section-body reveal">Water is the fundamental input of human civilization. Its scarcity dismantles food systems, collapses economies, triggers conflict, and kills children before age five.</p>
+    <div class="crisis-grid">
+      <div class="crisis-visual reveal">
+        <div class="water-globe"></div>
+        <div class="globe-caption">Only 2.5% of Earth's water is freshwater — and most is inaccessible.</div>
+      </div>
+      <div class="crisis-facts reveal">
+        <div class="fact-card"><div class="fact-number">785M</div><div class="fact-text">People drink from unsafe water sources contaminated with pathogens.</div></div>
+        <div class="fact-card"><div class="fact-number">2.5HR</div><div class="fact-text">Average daily time women in Sub-Saharan Africa spend collecting water.</div></div>
+        <div class="fact-card"><div class="fact-number">$260B</div><div class="fact-text">Annual economic loss from inadequate water supply in developing nations.</div></div>
+        <div class="fact-card"><div class="fact-number">3.6B</div><div class="fact-text">People with inadequate water supply at least one month per year.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="live-counter">
+    <div class="counter-label">People who died from water-related disease since you opened this page</div>
+    <div class="counter-number" id="deathCounter">0</div>
+    <div class="counter-sub">Every 2 minutes, a child dies from a water-related disease.</div>
+    <div class="counter-note">Based on WHO data: ~3,300 preventable deaths per day.</div>
+  </div>
+
+  <section class="regions" id="regions">
+    <div class="section-label">Section 02</div>
+    <h2 class="section-title reveal">WHERE THE<br>CRISIS BURNS</h2>
+    <p class="section-body reveal">Systematic failures of water infrastructure across regions housing hundreds of millions.</p>
+    <table class="regions-table reveal">
+      <thead><tr><th>Region</th><th>Affected</th><th>Severity</th><th>Driver</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td><span class="region-name">Sub-Saharan Africa</span></td><td>400M</td><td><div class="severity-bar-wrap"><div class="severity-bar-bg"><div class="severity-bar-fill critical" style="width:95%"></div></div>95%</div></td><td>Infrastructure gap</td><td><span class="badge critical">Critical</span></td></tr>
+        <tr><td><span class="region-name">South Asia</span></td><td>600M</td><td><div class="severity-bar-wrap"><div class="severity-bar-bg"><div class="severity-bar-fill critical" style="width:88%"></div></div>88%</div></td><td>Groundwater depletion</td><td><span class="badge critical">Critical</span></td></tr>
+        <tr><td><span class="region-name">Middle East & N. Africa</span></td><td>250M</td><td><div class="severity-bar-wrap"><div class="severity-bar-bg"><div class="severity-bar-fill high" style="width:80%"></div></div>80%</div></td><td>Arid climate + conflict</td><td><span class="badge high">High Risk</span></td></tr>
+        <tr><td><span class="region-name">Central America</span></td><td>90M</td><td><div class="severity-bar-wrap"><div class="severity-bar-bg"><div class="severity-bar-fill high" style="width:70%"></div></div>70%</div></td><td>Drought cycles</td><td><span class="badge high">High Risk</span></td></tr>
+        <tr><td><span class="region-name">Northern China</span></td><td>320M</td><td><div class="severity-bar-wrap"><div class="severity-bar-bg"><div class="severity-bar-fill high" style="width:75%"></div></div>75%</div></td><td>Aquifer exhaustion</td><td><span class="badge high">High Risk</span></td></tr>
+        <tr><td><span class="region-name">Southern Europe</span></td><td>50M</td><td><div class="severity-bar-wrap"><div class="severity-bar-bg"><div class="severity-bar-fill moderate" style="width:45%"></div></div>45%</div></td><td>Climate drought</td><td><span class="badge moderate">Moderate</span></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="causes" id="causes">
+    <div class="section-label">Section 03</div>
+    <h2 class="section-title reveal">ROOT<br>CAUSES</h2>
+    <p class="section-body reveal">Water scarcity is not an act of nature. It is the product of compounding human systems intersecting without adequate governance.</p>
+    <div class="causes-grid reveal">
+      <div class="cause-card"><span class="cause-icon">🌾</span><div class="cause-title">Industrial Agriculture</div><div class="cause-desc">Agriculture consumes 70% of the world's freshwater, depleting aquifers at rates that take millennia to replenish.</div></div>
+      <div class="cause-card"><span class="cause-icon">🌡️</span><div class="cause-title">Climate Disruption</div><div class="cause-desc">Rising temperatures shrink glaciers and shift rainfall patterns. Wet regions flood; dry regions become deserts.</div></div>
+      <div class="cause-card"><span class="cause-icon">🏙️</span><div class="cause-title">Urban Growth</div><div class="cause-desc">Megacities expand faster than water infrastructure scales. 1 billion people in slums lack reliable piped water.</div></div>
+      <div class="cause-card"><span class="cause-icon">⚗️</span><div class="cause-title">Pollution</div><div class="cause-desc">Industrial discharge and agricultural runoff render existing freshwater sources unusable globally.</div></div>
+      <div class="cause-card"><span class="cause-icon">⚖️</span><div class="cause-title">Governance Failure</div><div class="cause-desc">Water crosses borders; policies do not. Absent long-term planning leaves billions exposed to preventable scarcity.</div></div>
+      <div class="cause-card"><span class="cause-icon">📉</span><div class="cause-title">Underinvestment</div><div class="cause-desc">Low-income nations spend less than 0.1% of GDP on water infrastructure despite a 4:1 return on investment.</div></div>
+    </div>
+  </section>
+
+  <section class="solutions" id="solutions">
+    <div class="section-label">Section 04</div>
+    <h2 class="section-title reveal">THE PATHS<br>FORWARD</h2>
+    <p class="section-body reveal">The crisis is real. The solutions exist. What is missing is urgency, political will, and coordinated capital.</p>
+    <div class="solutions-layout">
+      <div class="solution-item reveal"><div class="solution-num">01</div><div class="solution-title">Atmospheric Water Harvesting</div><div class="solution-desc">AWG machines produce potable water from air in regions with 30%+ humidity — no groundwater required.</div><span class="solution-tag">Emerging Technology</span></div>
+      <div class="solution-item reveal"><div class="solution-num">02</div><div class="solution-title">Solar Desalination</div><div class="solution-desc">Solar-powered reverse osmosis converts seawater to drinking water at $0.50–$1.00/m³. Scalable to any size.</div><span class="solution-tag">Proven at Scale</span></div>
+      <div class="solution-item reveal"><div class="solution-num">03</div><div class="solution-title">Precision Irrigation</div><div class="solution-desc">Drip irrigation reduces agricultural water use by 40–60% while maintaining crop yields.</div><span class="solution-tag">Agricultural Reform</span></div>
+      <div class="solution-item reveal"><div class="solution-num">04</div><div class="solution-title">Wastewater Recycling</div><div class="solution-desc">Singapore's NEWater system recycles 100% of wastewater to potable standards, cutting net demand by 30%.</div><span class="solution-tag">Circular Systems</span></div>
+      <div class="solution-item reveal"><div class="solution-num">05</div><div class="solution-title">Rainwater Harvesting</div><div class="solution-desc">Community rooftop collection with underground cisterns provides localized resilience without major infrastructure.</div><span class="solution-tag">Community Infrastructure</span></div>
+      <div class="solution-item reveal"><div class="solution-num">06</div><div class="solution-title">Water Treaties</div><div class="solution-desc">Diplomatic frameworks for shared river basin management prevent water wars and optimize distribution.</div><span class="solution-tag">Political Architecture</span></div>
+    </div>
+  </section>
+
+  <section class="act" id="act">
+    <div class="section-label" style="justify-content:center">Section 05</div>
+    <h2 class="section-title reveal">WHAT YOU<br>CAN DO</h2>
+    <p class="section-body reveal" style="margin:0 auto">Knowledge without action is theater. Concrete leverage points at every level of agency.</p>
+    <div class="act-grid reveal">
+      <div class="act-card"><span class="act-icon">🔬</span><div class="act-title">Learn & Research</div><div class="act-desc">Water, energy, and food nexus thinking is foundational to every solution in climate and agriculture.</div><a href="#" class="act-link">Access Research Library</a></div>
+      <div class="act-card"><span class="act-icon">💰</span><div class="act-title">Fund Frontlines</div><div class="act-desc">$30 provides clean water access for one person for a decade through Charity: Water or WaterAid.</div><a href="#" class="act-link">View Vetted Organizations</a></div>
+      <div class="act-card"><span class="act-icon">📣</span><div class="act-title">Demand Policy</div><div class="act-desc">Advocacy at local, national, and international levels creates compounding change on water infrastructure.</div><a href="#" class="act-link">Policy Action Toolkit</a></div>
+      <div class="act-card"><span class="act-icon">🏠</span><div class="act-title">Reduce Footprint</div><div class="act-desc">Your virtual water consumption is 3,800 liters/day. Dietary shifts carry real aggregate impact.</div><a href="#" class="act-link">Calculate Your Usage</a></div>
+      <div class="act-card"><span class="act-icon">🛠️</span><div class="act-title">Build Solutions</div><div class="act-desc">Water technology is one of the highest-leverage technical domains of the 21st century.</div><a href="#" class="act-link">Career Pathways</a></div>
+      <div class="act-card"><span class="act-icon">📡</span><div class="act-title">Spread Awareness</div><div class="act-desc">Sharing accurate, data-grounded content moves this issue up the global priority stack.</div><a href="#" class="act-link">Share This Site</a></div>
+    </div>
+  </section>
+
+  <div class="newsletter">
+    <h2 class="newsletter-title">STAY INFORMED</h2>
+    <p class="newsletter-sub">Monthly briefing. Zero noise. Pure signal on water science, policy, and solutions.</p>
+    <div class="newsletter-form">
+      <input type="email" class="newsletter-input" placeholder="your@email.com" />
+      <button class="newsletter-btn">Subscribe</button>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="nav-logo">AQUA CRISIS</span>
+        <p>A global information platform tracking the water scarcity emergency. Data sourced from WHO, UNICEF, World Bank, and leading hydrological research institutions.</p>
+      </div>
+      <div class="footer-col"><h4>Sections</h4><ul><li><a href="#crisis">The Crisis</a></li><li><a href="#regions">Affected Regions</a></li><li><a href="#causes">Root Causes</a></li><li><a href="#solutions">Solutions</a></li><li><a href="#act">Take Action</a></li></ul></div>
+      <div class="footer-col"><h4>Data Sources</h4><ul><li><a href="#">WHO Reports</a></li><li><a href="#">UNICEF Data</a></li><li><a href="#">World Bank</a></li><li><a href="#">IPCC Findings</a></li><li><a href="#">FAO Statistics</a></li></ul></div>
+      <div class="footer-col"><h4>Get Involved</h4><ul><li><a href="#">Donate</a></li><li><a href="#">Volunteer</a></li><li><a href="#">Research Hub</a></li><li><a href="#">Press Kit</a></li><li><a href="#">Contact</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 AQUA CRISIS. All statistics from peer-reviewed sources.</div>
+      <div class="footer-tagline">Water Is Life. Treat It Accordingly.</div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
